@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="description" content="Mailer" />
+<meta name="keywords" content="Mailer" />
+<title>{{ title }}</title>
+<link href="{{ registry.uri }}css/Aristo.css" rel="stylesheet" type="text/css" />
+<link href="{{ registry.uri }}css/main.css" rel="stylesheet" media="all" />
+<link href="{{ registry.uri }}css/jHtmlArea.css" rel="stylesheet" type="text/css" />
+<link href="{{ registry.uri }}css/default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{{ registry.uri }}js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="{{ registry.uri }}js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="{{ registry.uri }}js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="{{ registry.uri }}js/jquery.timers.js"></script>
+<script type="text/javascript" src="{{ registry.uri }}js/jHtmlArea-0.7.0.min.js"></script>
+<script type="text/javascript" src="{{ registry.uri }}js/scripts.js"></script>
+<script type="text/javascript" src="{{ registry.uri }}js/fm.js"></script>
+
+<script type="text/javascript">
+    init('{{ registry.uri }}');
+</script>
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="topbar">
+<div class="downsh">
+
+<ul class="dropdown">
+	<li><a href="#" class="dir">Папки {{ newMail }}</a>
+		<ul>
+			<li onclick="gourl('')">
+				<a href="{{ registry.uri }}"><img border="0" alt="" src="/otms/img/left/mail-receive.png" style="vertical-align: middle"></a>
+				<a href="{{ registry.uri }}">Входящие</a>
+			    [<span id="main" {% if registry.mainCount > 0 %}class="bolder"{% endif %}>{{ registry.mainCount }}</span>/<span id="allMain">{{ registry.allCount }}</span>]
+			</li>
+			
+			{% if folders %}
+			{% for key, part in folders %}
+			<li onclick="gourl('get/?folder={{ part.id }}')">
+				<a class="mail_folder" href="{{ registry.uri }}get/?folder={{ part.id }}">{{ part.folder }}</a>&nbsp;[<span id="{{ part.id }}" {% if part.count > 0 %}class="bolder"{% endif %}>{{ part.count }}</span>/<span id="all{{ part.id }}">{{ part.all }}</span>]
+			</li>
+			{% endfor %}
+			{% endif %}
+			
+			<li onclick="gourl('send/')">
+				<a href="{{ registry.uri }}send/"><img border="0" alt="" src="/otms/img/left/mail-send.png" style="vertical-align: middle"></a>
+				<a href="{{ registry.uri }}send/">Отправленные</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<ul class="dropdown">
+	<li><a href="#" class="dir">Настройки</a>
+		<ul>
+			<li onclick="gourl('folder/')">
+			    <a href="{{ registry.uri }}folder/"><img style="vertical-align: middle" src="{{ registry.uri }}img/left/folder-plus.png" alt="" border="0" /></a>
+				<a class="aleft" href="{{ registry.uri }}folder/">Управление папками</a>
+			</li>
+			
+			<li onclick="gourl('sort/')">
+			    <a href="{{ registry.uri }}sort/"><img style="vertical-align: middle" src="{{ registry.uri }}img/left/sort.png" alt="" border="0" /></a>
+				<a class="aleft" href="{{ registry.uri }}sort/">Сортировка писем</a>
+			</li>
+			
+			<li onclick="gourl('boxes/')">
+			    <a href="{{ registry.uri }}boxes/"><img style="vertical-align: middle" src="{{ registry.uri }}img/left/mail.png" alt="" border="0" /></a>
+				<a class="aleft" href="{{ registry.uri }}boxes/">Управление ящиками</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+	
+<div id="menu">
+	<div class="smenu">
+	    <a style="cursor: pointer" onclick="checkMail()"><img style="vertical-align: middle" src="{{ registry.uri }}img/left/inbox-download.png" alt="" border="0" /></a>
+	    <a class="aleft" style="cursor: pointer" onclick="checkMail()">Проверить</a>
+	</div>
+	
+	<div class="smenu">
+		<a href="{{ registry.uri }}compose/"><img style="vertical-align: middle" src="{{ registry.uri }}img/left/mail-plus.png" alt="" border="0" /></a>
+	    <a class="aleft" href="{{ registry.uri }}compose/">Создать</a>
+	</div>
+	
+	<div class="smenu">
+		<a href="{{ registry.uri }}contact/"><img style="vertical-align: middle" src="{{ registry.uri }}img/users.png" alt="" border="0" /></a>
+	    <a class="aleft" href="{{ registry.uri }}contact/">Контакты</a>
+	</div>
+	
+<div id="checkingMail" title="Проверка новых сообщений" style="display: none">
+    <p id="ajaxCheckMail" style="text-align: center">
+        <img src="{{ registry.uri }}img/ajaxCheckMail.gif" alt="ajax-loader.gif" border="0" />
+    </p>
+</div>
+
+</div>
+		
+		
+<div id="profile"><a href="{{ registry.uri }}profile/">{{ registry.ui.name }} {{ registry.ui.soname }}</a>&nbsp;<a href="{{ registry.uri }}exit/">[выход]</a></div>
+</div>
+</div>
+<!-- /TOP -->
+
+<!-- CONTENT -->
+<div id="container">
+
+<div id="content">
+    {{ main_content }}
+</div>
+
+</div>
+<!-- /CONTENT -->
+
+</body>
+</html>
