@@ -8,7 +8,7 @@ PHP > 5.2
 PDO Database: MySQL, PostgreSQL, SQLite (mysql tested)
 JSON PHP support
 
-Edit /system/config.ihi
+Edit /system/config.ini
 
 chmod /attaches /cache /upload
 
