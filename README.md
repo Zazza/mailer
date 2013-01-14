@@ -1,7 +1,10 @@
 # MAIL
 
-[Demo](http://bitboom.ru/mail/demo/)
-Login and Password: mailer/mailer
+[Demo](http://tushkan.com/demo/mail/)
+
+Login and Password: demo/demo
+
+Site: [http://tushkan.com/projects/pepo/](http://tushkan.com/projects/pepo/)
 
 ## Requirements
 PHP > 5.2
@@ -17,4 +20,6 @@ Database dump: /sql/mail.sql
 Login and Password: mailer/mailer
 
 ## License
-See COPYING file
+GPL
+
+See [COPYING](https://github.com/Zazza/mailer/blob/master/COPYING) file
